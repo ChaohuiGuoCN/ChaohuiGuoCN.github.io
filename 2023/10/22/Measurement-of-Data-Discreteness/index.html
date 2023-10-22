@@ -6,14 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>Measurement of Data Discreteness | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="The discreteness of data measures how spread out a set of data is. There are many standards and methods to measure this spread, and the choice of a specific method depends on the specific data requir">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Measurement of Data Discreteness">
+<meta property="og:url" content="http://example.com/2023/10/22/Measurement-of-Data-Discreteness/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="The discreteness of data measures how spread out a set of data is. There are many standards and methods to measure this spread, and the choice of a specific method depends on the specific data requir">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-22T20:19:49.000Z">
+<meta property="article:modified_time" content="2023-10-22T21:45:18.207Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Dispersion">
+<meta property="article:tag" content="Discreteness">
+<meta property="article:tag" content="Range">
+<meta property="article:tag" content="Mean Deviation">
+<meta property="article:tag" content="Standard Deviation">
+<meta property="article:tag" content="Variance">
+<meta property="article:tag" content="Interquartile">
+<meta property="article:tag" content="IQR">
+<meta property="article:tag" content="Heteroscedasticity Ratio">
+<meta property="article:tag" content="Coefficient of Variation">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -126,36 +140,48 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Measurement-of-Data-Discreteness" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/10/22/Measurement-of-Data-Discreteness/" class="archive-article-date">
-  	<time datetime="2023-10-22T20:19:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/10/22/Measurement-of-Data-Discreteness/">Measurement of Data Discreteness</a>
+    <h1 class="article-title" itemprop="name">
+      Measurement of Data Discreteness
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2023/10/22/Measurement-of-Data-Discreteness/" class="archive-article-date">
+  	<time datetime="2023-10-22T20:19:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>The discreteness of data measures how spread out a set of data is. There are many standards and methods to measure this spread, and the choice of a specific method depends on the specific data requirements.</p>
+</blockquote>
+<h1 id="Range-极差"><a href="#Range-极差" class="headerlink" title="Range (极差)"></a>Range (极差)</h1><p>It’s the most simple one among all the methods. It reflects the range of samples.</p>
+<script type="math/tex; mode=display">
+R = max(i) - min(i)</script><h1 id="Interquartile-IQR-四分位差"><a href="#Interquartile-IQR-四分位差" class="headerlink" title="Interquartile (IQR, 四分位差)"></a>Interquartile (IQR, 四分位差)</h1><p>IQR represents the range between the 75th percentile data (Q3) and the 25th percentile data (Q1) in the dataset. It reflects the range of the central 50% of the data.</p>
+<script type="math/tex; mode=display">
+IQR = Q_3 - Q_1</script><h1 id="Mean-Deviation-平均差"><a href="#Mean-Deviation-平均差" class="headerlink" title="Mean Deviation (平均差)"></a>Mean Deviation (平均差)</h1><p>The sum of absolute differences between each variable value and the mean, divided by the total count <code>n</code>, the mean deviation with the mean as the center, comprehensively and accurately reflects the discreteness of a dataset.</p>
+<script type="math/tex; mode=display">
+M_d = \frac{\sum_{i=1}^{n}|x_n-\bar{x}|}{n}</script><h1 id="Variance-Standard-Deviation-Coefficient-of-Variation-方差-标准差-离散系数"><a href="#Variance-Standard-Deviation-Coefficient-of-Variation-方差-标准差-离散系数" class="headerlink" title="Variance/Standard Deviation/Coefficient of Variation (方差/标准差/离散系数)"></a>Variance/Standard Deviation/Coefficient of Variation (方差/标准差/离散系数)</h1><script type="math/tex; mode=display">
+Variance = \frac{1}{N}\sum_{i=1}^n(x_i-\bar{x})^2</script><script type="math/tex; mode=display">
+Standard Deviation = \sqrt{Variance}</script><script type="math/tex; mode=display">
+V_i = \frac{StandardDeviation}{\bar{x}}</script><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> stats <span class="keyword">as</span> sts</span><br><span class="line">scores = [<span class="number">31</span>, <span class="number">24</span>, <span class="number">23</span>, <span class="number">25</span>, <span class="number">14</span>, <span class="number">25</span>, <span class="number">13</span>, <span class="number">12</span>, <span class="number">14</span>, <span class="number">23</span>,</span><br><span class="line">          <span class="number">32</span>, <span class="number">34</span>, <span class="number">43</span>, <span class="number">41</span>, <span class="number">21</span>, <span class="number">23</span>, <span class="number">26</span>, <span class="number">26</span>, <span class="number">34</span>, <span class="number">42</span>,</span><br><span class="line">          <span class="number">43</span>, <span class="number">25</span>, <span class="number">24</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">44</span>, <span class="number">23</span>, <span class="number">14</span>, <span class="number">52</span>,<span class="number">32</span>,</span><br><span class="line">          <span class="number">42</span>, <span class="number">44</span>, <span class="number">35</span>, <span class="number">28</span>, <span class="number">17</span>, <span class="number">21</span>, <span class="number">32</span>, <span class="number">42</span>, <span class="number">12</span>, <span class="number">34</span>]</span><br><span class="line"><span class="comment"># Measures of Cnetral Tendency集中趋势的度量</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Sum/求和：&#x27;</span>,np.<span class="built_in">sum</span>(scores))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Count/个数：&#x27;</span>,<span class="built_in">len</span>(scores))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Mean/平均值:&#x27;</span>,np.mean(scores))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Median/中位数:&#x27;</span>,np.median(scores))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Mode众数:&#x27;</span>,sts.mode(scores))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Lower Quartile/上四分位数&#x27;</span>,sts.quantile(scores,p=<span class="number">0.25</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Upper Quartile/下四分位数&#x27;</span>,sts.quantile(scores,p=<span class="number">0.75</span>))</span><br><span class="line"><span class="comment"># Measures of Dispersion离散趋势的度量</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Maximum/最大值:&#x27;</span>,np.<span class="built_in">max</span>(scores))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Minimum/最小值:&#x27;</span>,np.<span class="built_in">min</span>(scores))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Rnage/极差:&#x27;</span>,np.<span class="built_in">max</span>(scores)-np.<span class="built_in">min</span>(scores))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Interquartile Range/四分位差&#x27;</span>,sts.quantile(scores,p=<span class="number">0.75</span>)-sts.quantile(scores,p=<span class="number">0.25</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Standard Deviation/标准差:&#x27;</span>,np.std(scores))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Variance/方差:&#x27;</span>,np.var(scores))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Coefficient of Variation/离散系数:&#x27;</span>,np.std(scores)/np.mean(scores))</span><br><span class="line"><span class="comment"># Measuers of Skewness and Kurtosis偏度与峰度的度量</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Skewness/偏度:&#x27;</span>,sts.skewness(scores))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Kurtosis/峰度:&#x27;</span>,sts.kurtosis(scores))&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -203,65 +229,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/10/22/Measurement-of-Data-Discreteness/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/10/21/My-Profile/" class="archive-article-date">
-  	<time datetime="2023-10-21T20:47:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-21</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2023/10/21/My-Profile/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">My Profile</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/10/21/My-Profile/">My Profile</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Self</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Introduction</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Contact</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -284,8 +351,8 @@
 	var yiliaConfig = {
 		mathjax: Ture,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
