@@ -128,6 +128,160 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Snellius" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/10/29/Snellius/">Snellius</a>
+    </h1>
+  
+
+        
+        <a href="/2023/10/29/Snellius/" class="archive-article-date">
+  	<time datetime="2023-10-29T11:26:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Apple"><a href="#Apple" class="headerlink" title="Apple"></a>Apple</h1><p>Open the ‘Terminal’ application. In the terminal window, type</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh &lt;username&gt;@snellius.surf.nl</span><br></pre></td></tr></table></figure>
+<p>To redirect any graphic output from the HPC system to your own system, you’ll need a X-server like XQuartz. Then, log in to the HPC system using.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -X &lt;username&gt;@snellius.surf.nl</span><br></pre></td></tr></table></figure>
+<h2 id="Manual-use-of-miniconda"><a href="#Manual-use-of-miniconda" class="headerlink" title="Manual use of miniconda"></a>Manual use of miniconda</h2><p><strong>Step 1: Get Miniconda</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://repo.anaconda.com/miniconda/Miniconda3-py37_4.10.3-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+<p><strong>Step 2: Install Miniconda</strong></p>
+<p>(“-b” skips all confirmations with “yes”)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash Miniconda3-py37_4.10.3-Linux-x86_64.sh -b</span><br></pre></td></tr></table></figure>
+<p>Initialize conda.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/miniconda3/bin/conda init</span><br></pre></td></tr></table></figure>
+<p>Close the current terminal and start a new one.</p>
+<p>Check that conda has been installed: the shell prompt should start with the name of the currently active conda-environment.</p>
+<p>By default, this is “(base)”.</p>
+<p>Try the <em>version</em> parameter.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(base) username@hostname:~$ conda --version</span><br><span class="line">conda 4.10.3</span><br></pre></td></tr></table></figure>
+<p>The actual version, of course, can differ.</p>
+<p>Update conda.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda update conda -y</span><br></pre></td></tr></table></figure>
+<p><strong>Step 3: Create a virtual conda-environment</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --yes --name 01_pandas1.3 pandas=1.3.0</span><br></pre></td></tr></table></figure>
+<p><strong>Step 4: Activate the environment</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate 01_pandas1.3</span><br></pre></td></tr></table></figure>
+<p><strong>Step 5: Create a kernel from the environment</strong></p>
+<p>If you want to use your environment as a Jupyter-kernel, you can continue with this step.</p>
+<p>Install the ipykernel tool into the environment.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda ``install` `--``yes` `--channel anaconda ipykernel</span><br></pre></td></tr></table></figure>
+<p>Run the ipykernel tool. The display name will identify your environment/kernel in Jupyter Notebooks.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m ipykernel ``install` `--user --name 01_pandas1.3 --display-name ``&quot;Py Pandas 1.3&quot;</span><br></pre></td></tr></table></figure>
+<p>You can now leave the environment again.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda deactivate</span><br></pre></td></tr></table></figure>
+<h2 id="Snellius-partitions"><a href="#Snellius-partitions" class="headerlink" title="Snellius partitions"></a>Snellius partitions</h2><p>Compute nodes are grouped into partitions in order to allow the user to select different hardware to run their software on. Each partition includes a subset of nodes with a different type of hardware and a specific maximum wall time.</p>
+<p>The partitions can be selected by users via the SLURM option:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#SBATCH --partition=&lt;partition name&gt;</span><br></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#SBATCH -p &lt;partition name&gt;</span><br></pre></td></tr></table></figure>
+<p>The partitions available on Snellius are summarised in the <a target="_blank" rel="noopener" href="https://servicedesk.surf.nl/wiki/display/WIKI/Snellius+usage+and+accounting">table</a>. For details of the different hardware available on each node, please look at the <a target="_blank" rel="noopener" href="https://servicedesk.surf.nl/wiki/display/WIKI/Snellius+hardware+and+file+systems">Snellius hardware and file systems</a> page.</p>
+<h2 id="Getting-account-and-budget-information"><a href="#Getting-account-and-budget-information" class="headerlink" title="Getting account and budget information"></a>Getting account and budget information</h2><p>You can view your account details using</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ accinfo</span><br></pre></td></tr></table></figure>
+<p>This shows information such as the e-mail associated with the account, the initial and remaining budget, and until when the account is valid.</p>
+<p>An overview of the SBU consumption for the current account can be obtained with</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ accuse</span><br></pre></td></tr></table></figure>
+<p>By default, consumption is shown for the current login, per month, over the last year. Per day usage can be obtained by adding the <code>-d</code> flag. The start and end of the period shown in the overview can be changed with the <code>-s DD-MM-YYYY</code>and <code>-e DD-MM-YYYY</code> flags, respectively. Finally, consumption for a specific account or login can be obtained using <code>-a accountname</code> and <code>-u username</code>, respectively.</p>
+<p>In case you want to know the CPU/GPU budgets separately, you can try:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">accinfo --product=cpu``accinfo --product=gpu</span><br></pre></td></tr></table></figure>
+<h2 id="SLURM-batch-system"><a href="#SLURM-batch-system" class="headerlink" title="SLURM batch system"></a>SLURM batch system</h2><p><strong>Defining the requirements of a job</strong></p>
+<p>For the batch system to know which nodes to allocate to you, and for how long, you need to start your jobscript by defining options for the SLURM batch system. The SLURM system will read all lines from the start of your job script until the first non-comment or empty line that does not start #SBATCH - hence all your SLURM options should be at the start of your job script, before anything else.</p>
+<p><strong>Shell</strong></p>
+<p>You can define the interpreter for your job script with a <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Shebang_(Unix">shebang</a>), just like in any other script. For example, if you want to use Bash, you should start your script with</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br></pre></td></tr></table></figure>
+<p><strong>Wall clock time</strong></p>
+<p>You can set the duration for which the nodes remain allocated to you (known as the wall clock time), using</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#SBATCH -t ``1``:``30``:``00</span><br></pre></td></tr></table></figure>
+<p>The duration can be specified in minutes, or in the MM:SS, or HH:MM:SS format (as in the example), of on the D-HH:MM:SS. In general, the maximum walltime for CPU jobs is 120 hours (5 days); for jobs submitted to the GPU queue, the maximum walltime is 120 hours. Some queues have a different maximum walltime.</p>
+<blockquote>
+<p>Choose your wall clock time carefully: if your job is still running after the wall clock time has exceeded, it will be cancelled and you will lose your results!</p>
+<p>In general, we recommend timing a minimal version of your computational task in order to estimate how long the total task will take. Then, choose your wall clock time liberally based on your expected runtime (e.g. 1.5-2x higher). Once you gain more experience in running similar-sized jobs, you could consider setting walltimes more accurately, as shorter jobs are slightly easier for the scheduler to fit in.</p>
+</blockquote>
+<p><strong>Partition</strong></p>
+<p>On our systems, different types of node are grouped into partitions each having different limit for wall-clock time, job size, access limitation, etc. Partitions can overlap, i.e. compute nodes can be contained in several partitions (e.g.: “normal” and “short” partitions share a large number of nodes but they have different maximum wall time limit).</p>
+<p>Users can therefore request specific a node type by submitting to the partition which contain it (from the one available on each system). </p>
+<p>To set the partition you want to submit to, use the -p argument. For example to run on the thin partition (available on Snellius) you would need to specify:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#SBATCH -p thin</span><br></pre></td></tr></table></figure>
+<p>If you don’t specify a partition, your job will be scheduled on the <code>thin</code> partition by default. You can check all available partitions, including their maximum walltime and number of nodes, using the <code>sinfo</code> command.</p>
+<p>The available compute partitions that batch jobs can be submitted to can be listed by issuing the following command</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sinfo</span><br></pre></td></tr></table></figure>
+<p>You can get a summary of the available partitions by using the <code>-s</code> flag.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sinfo -s</span><br></pre></td></tr></table></figure>
+<p>The available partitions of Snellius are described <a target="_blank" rel="noopener" href="https://servicedesk.surf.nl/wiki/display/WIKI/Snellius+usage+and+accounting">here</a>. </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Connecting</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Transferring Data</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SURF</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Snellius</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/10/29/Snellius/">Read More >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Measurement-of-Data-Discreteness" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -472,18 +626,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Self</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Contact</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Dispersion</a>
               </li>
              
@@ -521,6 +663,34 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Coefficient of Variation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Connecting</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Transferring Data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SURF</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Snellius</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Self</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Contact</a>
               </li>
             
             <div class="clearfix"></div>
